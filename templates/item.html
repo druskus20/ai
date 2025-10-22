@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Anpli's Inventory</title>
+</head>
+
+<body>
+  <h1>Item: {{ item_name }}</h1>
+
+  {% for image in images %}
+    <img src="/{{ image }}" alt="{{ item_name }}" style="max-width:300px; max-height:300px;">
+  {% endfor %}
+
+  <div>
+  <h3>Edit</h3>
+    <form  
+      enctype=multipart/form-data 
+      action="/edit/{{ item_id }}" method="POST">
+        <label>New Name:</label>
+        <input type="text" name="item_name" required>
+        <input type="submit" value="Update Name">
+    </form>
+  </div>
+
+  <!-- post --> 
+
+  <div>
+  <h3>Delete</h3>
+  <form action="/delete/{{ item_id }}" method="POST">
+    <input type="submit" value="Delete Item">
+  </form>
+  </div>
+
+
+
+</body>
+
+</html>

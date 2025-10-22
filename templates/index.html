@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Anpli's Inventory</title>
+</head>
+<body>
+    <h1>AI</h1>
+
+    <form 
+      enctype=multipart/form-data
+      action="/add" method="POST">
+        <label>Add Item:</label>
+        <input type="text" name="item_name" required autofocus>
+        <input type="file"  name="item_image" accept="image/png, image/jpeg" />
+        <input type="submit" value="Add"> <!-- On submit, we send a POST request to /add to add the item -->
+    </form>
+
+    <h2>Items</h2>
+    <ul>
+        {% for item in items %}
+        <li>
+        <a href="/item/{{ item[0] }}">
+          {{ item[1] }}
+        </a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
